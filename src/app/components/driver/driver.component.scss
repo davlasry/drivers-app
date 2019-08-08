@@ -1,0 +1,52 @@
+.driver-container {
+  height: 100px;
+  width: 300px;
+  border: 1px solid #e4e4e4;
+  margin-bottom: 10px;
+  cursor: pointer;
+
+  &.selected {
+    background-color: #00ff95;
+
+    ::ng-deep .mat-badge-warn .mat-badge-content {
+      background-color: white !important;
+      color: #00ff95 !important;
+    }
+  }
+
+  .picture {
+    padding: 7px;
+
+    img {
+      height: 84px;
+    }
+  }
+
+  .driver-info {
+    padding: 10px;
+
+    .driver-name {
+      color: #5a5a5a;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .driver-phone {
+      font-size: 12px;
+    }
+
+    .tasks-number {
+      padding-right: 15px;
+
+      .shopping-icon {
+        height: 35px;
+        width: 30px;
+        font-size: 35px;
+      }
+
+      .mat-badge-warn .mat-badge-content {
+        background-color: #00ff95;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.drivers-list-container {
+  height: 100%;
+  padding: 10px 17px;
+  overflow: auto;
+  background-color: #f1fff9;
+}

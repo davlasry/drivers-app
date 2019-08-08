@@ -1,0 +1,8 @@
+<div class="drivers-list-container" fxLayout="column">
+  <app-driver
+    [driver]="driver"
+    [selectedDriverId]="selectedDriverId"
+    (driverClicked)="setDriverLocation($event)"
+    *ngFor="let driver of drivers$ | async"
+  ></app-driver>
+</div>

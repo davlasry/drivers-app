@@ -1,0 +1,27 @@
+<div
+  class="driver-container card"
+  [ngClass]="{ selected: driver.id === selectedDriverId }"
+  fxLayout="row"
+  (click)="onDriverClick()"
+>
+  <div class="picture">
+    <img src="assets/pictures/{{ driver.picture }}.jpg" alt="" />
+  </div>
+  <div class="driver-info" fxLayout="column" fxFlex>
+    <div class="driver-name">
+      {{ driver.name }}
+    </div>
+    <div class="driver-phone">
+      {{ driver.phone }}
+    </div>
+    <div fxFlex></div>
+    <div class="tasks-number" fxLayout="row" fxLayoutAlign="end end">
+      <mat-icon
+        class="shopping-icon"
+        [matBadge]="driver.tasks.length"
+        matBadgeColor="warn"
+        >local_shipping</mat-icon
+      >
+    </div>
+  </div>
+</div>
