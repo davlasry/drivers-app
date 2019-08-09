@@ -4,6 +4,10 @@
   fxLayout="row"
   (click)="onDriverClick()"
 >
+  <div class="icons">
+    <mat-icon (click)="openEditDriverModal($event)">edit</mat-icon>
+    <mat-icon (click)="openDeleteDriverModal($event)">delete</mat-icon>
+  </div>
   <div class="picture">
     <img src="assets/pictures/{{ driver.picture }}.jpg" alt="" />
   </div>

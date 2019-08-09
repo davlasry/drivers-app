@@ -20,4 +20,12 @@ export class DriverComponent {
   onDriverClick(): void {
     this.driverClicked.emit(this.driver);
   }
+
+  openEditDriverModal(event) {
+    event.stopPropagation();
+  }
+
+  openDeleteDriverModal(event) {
+    event.stopPropagation();
+  }
 }

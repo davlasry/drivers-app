@@ -7,7 +7,7 @@ import { GoogleMapService } from './services/google-map.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  initialLocation = { location: { lat: 51.678418, lng: 7.809007 } };
+  initialLocation = { location: { lat: 51.678418, lng: 7.809007 }, tasks: [] };
 
   constructor(private googleMapsService: GoogleMapService) {}
 

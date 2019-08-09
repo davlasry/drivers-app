@@ -2,12 +2,18 @@
   <agm-map
     [latitude]="(currentLocation | async)?.lat"
     [longitude]="(currentLocation | async)?.lng"
-    [zoom]="10"
+    [zoom]="9"
   >
     <agm-marker
       [latitude]="(currentLocation | async)?.lat"
       [longitude]="(currentLocation | async)?.lng"
-      [iconUrl]="'assets/icons/baseline_local_shipping_black_18dp.png'"
+      [iconUrl]="'http://maps.google.com/mapfiles/ms/micons/green-dot.png'"
+    ></agm-marker>
+    <agm-marker
+      *ngFor="let task of currentTasks | async"
+      [latitude]="task?.lat"
+      [longitude]="task?.lng"
+      [iconUrl]="'./assets/icons/baseline_local_shipping_black_18dp.png'"
     ></agm-marker>
   </agm-map>
 </div>
