@@ -22,9 +22,9 @@ export class DriversService {
 
   editDriver(newDriverData): void {
     const newDriversData = this.driversSource.value;
-    newDriversData.forEach((driver: IDriver) => {
+    newDriversData.forEach((driver: IDriver, index) => {
       if (newDriverData.id === driver.id) {
-        driver = newDriverData;
+        newDriversData[index] = newDriverData;
       }
     });
     this.driversSource.next(newDriversData);
