@@ -3,7 +3,7 @@ import { DriversService } from 'src/app/services/drivers.service';
 import { Observable, Subscription } from 'rxjs';
 import { GoogleMapService } from 'src/app/services/google-map.service';
 import { IDriver } from 'src/app/interfaces/driver';
-import { tap, map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-drivers-list',
