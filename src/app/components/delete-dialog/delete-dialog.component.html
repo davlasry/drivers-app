@@ -1,7 +1,8 @@
-<div class="edit-dialog-container">
+<div class="delete-dialog-container">
   <h3 mat-dialog-title>Delete driver</h3>
-  <div mat-dialog-content>
-    Are you sure you want to remove {{ data.name }} from the driver's list?
+  <div mat-dialog-content class="dialog-content">
+    Are you sure you want to remove <b>{{ data.name }}</b> from the driver's
+    list?
   </div>
   <div>
     <button mat-raised-button (click)="onNoClick()">No</button>
