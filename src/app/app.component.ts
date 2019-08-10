@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
 
   constructor(private googleMapsService: GoogleMapService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.googleMapsService.setDriverOnMap(this.initialLocation);
   }
 }

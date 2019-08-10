@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DriversService } from 'src/app/services/drivers.service';
 import { Observable, Subscription } from 'rxjs';
 import { GoogleMapService } from 'src/app/services/google-map.service';
+import { IDriver } from 'src/app/interfaces/driver';
 
 @Component({
   selector: 'app-drivers-list',
@@ -9,7 +10,7 @@ import { GoogleMapService } from 'src/app/services/google-map.service';
   styleUrls: ['./drivers-list.component.scss']
 })
 export class DriversListComponent implements OnInit, OnDestroy {
-  drivers$: Observable<any[]>;
+  drivers$: Observable<IDriver[]>;
   selectedDriverId: string;
   driversSubscription: Subscription;
 
@@ -19,23 +20,28 @@ export class DriversListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.drivers$ = this.driversService.getDrivers();
+    // Get drivers list
+    this.drivers$ = this.driversService.drivers$;
 
     // Subscribe to the drivers Observable
-    this.driversSubscription = this.drivers$.subscribe(drivers => {
-      // Set the first driver as the default one
-      this.setDriverLocation(drivers[0]);
-    });
+    this.driversSubscription = this.driversService.drivers$.subscribe(
+      drivers => {
+        // Set the first driver as the default one
+        if (drivers.length > 0) {
+          this.setDriverLocation(drivers[0]);
+        }
+      }
+    );
   }
 
   ngOnDestroy() {
     this.driversSubscription.unsubscribe();
   }
 
-  setDriverLocation(driver) {
-    // console.log('driver:', driver);
+  setDriverLocation(driver: IDriver): void {
+    // Set selected driver location
     this.googleMapsService.setDriverOnMap(driver);
+    // Set selected driver
     this.selectedDriverId = driver.id;
-    // console.log('this.selectedDriverId:', this.selectedDriverId);
   }
 }

@@ -1,14 +1,40 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { IDriver } from '../interfaces/driver';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DriversService {
-  constructor(private http: HttpClient) {}
+  driversSource = new BehaviorSubject<IDriver[]>([]);
+  drivers$ = this.driversSource.asObservable();
 
-  getDrivers(): Observable<any> {
-    return this.http.get('./assets/drivers.json');
+  constructor(private http: HttpClient) {
+    this.getDrivers();
+  }
+
+  getDrivers(): void {
+    this.http.get('./assets/drivers.json').subscribe((drivers: IDriver[]) => {
+      this.driversSource.next(drivers);
+    });
+  }
+
+  editDriver(newDriverData): void {
+    const newDriversData = this.driversSource.value;
+    newDriversData.forEach((driver: IDriver) => {
+      if (newDriverData.id === driver.id) {
+        driver = newDriverData;
+      }
+    });
+    this.driversSource.next(newDriversData);
+  }
+
+  deleteDriver(driverId): void {
+    const newDriversData = this.driversSource.value.filter(
+      (driver: IDriver) => driver.id !== driverId
+    );
+
+    this.driversSource.next(newDriversData);
   }
 }

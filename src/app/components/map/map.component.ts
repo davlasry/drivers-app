@@ -1,6 +1,8 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GoogleMapService } from 'src/app/services/google-map.service';
 import { Observable } from 'rxjs';
+import { ILocation } from 'src/app/interfaces/location';
+import { ITask } from 'src/app/interfaces/task';
 
 @Component({
   selector: 'app-map',
@@ -8,21 +10,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
-  title = 'My first AGM project';
-  currentLocation: Observable<any>;
-  currentTasks: Observable<any[]>;
+  currentLocation: Observable<ILocation>;
+  currentTasks: Observable<ITask[]>;
 
   constructor(private googleMapsService: GoogleMapService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    // Set current driver's location
     this.currentLocation = this.googleMapsService.currentLocation$;
+    // Set current driver's tasks
     this.currentTasks = this.googleMapsService.currentTasks$;
-
-    this.currentTasks.subscribe(currentTasks => {
-      console.log('currentTasks:', currentTasks);
-    });
-    // this.currentLocation.subscribe(currentLocation => {
-    //   console.log('currentLocation:', currentLocation);
-    // });
   }
 }
