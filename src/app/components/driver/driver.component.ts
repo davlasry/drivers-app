@@ -1,17 +1,6 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-  OnChanges
-} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { DriversService } from 'src/app/services/drivers.service';
@@ -24,7 +13,7 @@ import { IDriver } from 'src/app/interfaces/driver';
 })
 export class DriverComponent {
   @Input() driver: IDriver;
-  @Input() selectedDriverId: boolean;
+  @Input() selectedDriverId: string;
   @Output() driverClicked = new EventEmitter();
 
   constructor(
