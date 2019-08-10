@@ -13,6 +13,7 @@ export class DriversListComponent implements OnInit, OnDestroy {
   drivers$: Observable<IDriver[]>;
   selectedDriverId: string;
   driversSubscription: Subscription;
+  isAlreadyLoaded = false;
 
   constructor(
     private driversService: DriversService,
@@ -20,6 +21,8 @@ export class DriversListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.isAlreadyLoaded = true;
+
     // Get drivers list
     this.drivers$ = this.driversService.drivers$;
 
@@ -27,7 +30,7 @@ export class DriversListComponent implements OnInit, OnDestroy {
     this.driversSubscription = this.driversService.drivers$.subscribe(
       drivers => {
         // Set the first driver as the default one
-        if (drivers.length > 0) {
+        if (drivers.length > 0 && !this.isAlreadyLoaded) {
           this.setDriverLocation(drivers[0]);
         }
       }

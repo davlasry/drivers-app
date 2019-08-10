@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
@@ -8,6 +14,7 @@ import { IDriver } from 'src/app/interfaces/driver';
 
 @Component({
   selector: 'app-driver',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './driver.component.html',
   styleUrls: ['./driver.component.scss']
 })
