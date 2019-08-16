@@ -38,7 +38,7 @@ import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.
     BrowserModule,
     BrowserAnimationsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDMmn09szYBiZzveP5ueYg3jVR_ht9xklU'
+      apiKey: ''
     }),
     FlexLayoutModule,
     FormsModule,
